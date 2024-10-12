@@ -29,7 +29,7 @@ jobs:
           npm install dotenv
           npm install express
           node database/create_db.js
-          npm run dev
+          npm run dev &
 
       # Installer les paquets pour le frontend (dossier `front-office`)
       - name: Install Frontend Dependencies
