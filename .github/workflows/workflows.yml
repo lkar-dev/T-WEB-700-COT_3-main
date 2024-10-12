@@ -29,7 +29,10 @@ jobs:
       # Installer les paquets pour le frontend (dossier `front-office`)
       - name: Install Frontend Dependencies
         working-directory: ./front-office/money-count
-        run: npm install
+        run: | 
+          npm install
+          npm install dotenv
+          node database/create_db.js 
 
   # Job 2 : Build de l'application (Backend et Frontend)
   build-app:
@@ -47,7 +50,8 @@ jobs:
       # Build du backend
       - name: Build Backend
         working-directory: ./api
-        run: npm run dev
+        
+        run: npm start
 
       # Build du frontend
       - name: Build Frontend
