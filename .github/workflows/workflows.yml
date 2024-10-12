@@ -76,21 +76,14 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18'
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        
 
       # Scanner le backend avec Snyk
-      - name: Snyk Security Scan Backend
-        working-directory: ./api
+      - name: Snyk Security Scan 
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}  # Le token Snyk doit être ajouté dans les secrets GitHub
-        run: |
-          npx snyk auth $SNYK_TOKEN
-          npx snyk test
-
-      # Scanner le frontend avec Snyk
-      - name: Snyk Security Scan Frontend
-        working-directory: ./Front-office/money-count
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: |
           npx snyk auth $SNYK_TOKEN
           npx snyk test
