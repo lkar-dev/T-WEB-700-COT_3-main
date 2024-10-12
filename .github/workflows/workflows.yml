@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: '18'
 
@@ -27,6 +27,7 @@ jobs:
         run: |
           npm install
           npm install dotenv
+          npm install express
           node database/create_db.js
 
       # Installer les paquets pour le frontend (dossier `front-office`)
@@ -42,10 +43,10 @@ jobs:
     needs: install-packages  # Ce job dépend du job d'installation des paquets
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: '18'
 
@@ -66,12 +67,12 @@ jobs:
     needs: install-packages  # Ce job dépend du job d'installation des paquets
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '18'
 
       # Scanner le backend avec Snyk
       - name: Snyk Security Scan Backend
