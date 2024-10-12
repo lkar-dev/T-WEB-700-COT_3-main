@@ -24,15 +24,17 @@ jobs:
       # Installer les paquets pour le backend (dossier `api`)
       - name: Install Backend Dependencies
         working-directory: ./api
-        run: npm install
+        run: |
+          npm install
+          npm install dotenv
+          node database/create_db.js
 
       # Installer les paquets pour le frontend (dossier `front-office`)
       - name: Install Frontend Dependencies
         working-directory: ./front-office/money-count
-        run: | 
-          npm install
-          npm install dotenv
-          node database/create_db.js 
+        run: npm install
+         
+           
 
   # Job 2 : Build de l'application (Backend et Frontend)
   build-app:
