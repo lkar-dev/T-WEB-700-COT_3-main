@@ -3,10 +3,10 @@ name: CI/CD Pipeline with Security Scan
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   # Job 1 : Installer les paquets pour le backend et le frontend
