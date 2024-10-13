@@ -82,7 +82,7 @@ jobs:
 
       # Scanner le backend avec Snyk
       - name: Snyk Security Scan 
-        working-directory: .
+        working-directory: ./
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}  # Le token Snyk doit être ajouté dans les secrets GitHub
         run: |
